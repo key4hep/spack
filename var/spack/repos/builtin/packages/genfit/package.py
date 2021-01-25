@@ -18,3 +18,11 @@ class Genfit(CMakePackage):
     version('master', branch='master')
 
     depends_on('root')
+
+
+    def cmake_args(self):
+        args = []
+        root_prefix = self.spec["root"].prefix
+        args.append('-DROOT_DIR=%s'%root_prefix)
+
+        return args
